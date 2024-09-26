@@ -1,4 +1,4 @@
-#https://www.youtube.com/watch?v=vV12dGe_Fho
+
 import numpy as np
 import pandas as pd
 import matplotlib as mpl
