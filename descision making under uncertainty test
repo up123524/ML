@@ -1,0 +1,33 @@
+#descision making under uncertainty
+using Pkg
+Pkg.update("POMDPs")
+Pkg.update("POMDPModelTools")
+Pkg.update("POMDPPolicies")
+Pkg.update("POMDPSimulators")
+Pkg.update("QuickPOMDPs")
+using POMDPs
+using POMDPModelTools
+using POMDPPolicies
+using POMDPSimulators
+
+struct MyMDP <: MDP{Int64, Int64}
+end
+
+struct GridWorldState
+   x::Int64
+   y::Int64
+   done::Bool
+end
+
+GridWorldState(x::Int64,y::Int64)=GridWorldState(x,y,false)
+posequal(sl::GridWorldState,s2::GridWorldState)=s1.x==s2.x&&s1.y==s2.y
+
+action=:up
+
+mutable struct GridWorld <: MDP{GridWorldState, Symbol}
+   size_x::Int64
+   wize_y::Int64
+   reward_states::Vector{GridWorldState}
+   reward_values::Vector{Float64}
+   tprob::Float64discount_factpr::Float64
+end
